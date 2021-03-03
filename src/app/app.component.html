@@ -520,21 +520,35 @@
   </svg>
 
   
-  <h2>
-    数据的双向绑定
-  </h2>
-  // input组件需要额外引入FormModule
+  <img [src]="imgSrc" alt="">
+
+  <!-- 插值表达式 -->
+  Your name:  {{name}}
+
+  <!-- <button [('click')]></button> -->
+  <button [disabled]="btn1Status">btn1Status</button>
+
+  <!-- 事件绑定 -->
+  <button (click)="btn2Handler()">btn2</button>
+
+  事件绑定，数据单向
+  <input type="text" (input)="inputHandler($event)">
+
+  数据的双向绑定
+  <!-- // input组件需要额外引入FormModule -->
   <input type="text" [(ngModel)]='name' />
-  {{name}}
+
+  <h3>ngif</h3>
+  <p *ngIf="ngif1; else noServer">ngif控制是否显示</p>
+  <ng-template #noServer>{{noServer}}</ng-template>
+  <h3>ngFor</h3>
+  <p *ngFor="let item of items; let i = index" [ngStyle]="{'color': i > 2 ? 'skyblue' : 'pink'}">{{item.name}}</p>
+  <p *ngFor="let item of items; trackBy: trackByItems">{{item.name}}</p>
+  <p [ngStyle]="{'color': btn1Status ? 'red' : 'green' }">xxxxxxxxx</p>
+  <app-servers></app-servers>
 
 </div>
 
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 
